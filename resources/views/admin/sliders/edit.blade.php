@@ -21,7 +21,7 @@
                         </a>
                     </form>
                 </div>
-                <h4 class="page-title">Create Slider</h4>
+                <h4 class="page-title">Update Slider</h4>
             </div>
         </div>
     </div>
@@ -40,20 +40,22 @@
         </div>
     @endif
     <div class="row">
-        <form class="col-md-12" method="POST" action="{{route('sliders.store')}}"
+        <form class="col-md-12" method="POST" action="{{route('sliders.update',$slider->id)}}"
               enctype="multipart/form-data">
             @csrf
+            @method("PUT")
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="inputEmail4" class="col-form-label">Name Slider</label>
-                    <input name="name" value="{{old('name')}}" type="text" class="form-control" id="inputEmail4"
+                    <input name="name" value="{{$slider->name}}" type="text" class="form-control" id="inputEmail4"
                            placeholder="">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="inputEmail4" class="col-form-label">Description Slider</label>
-                    <input name="description" value="{{old('description')}}" type="text" class="form-control" id="inputEmail4"
+                    <input name="description" value="{{$slider->description}}" type="text" class="form-control"
+                           id="inputEmail4"
                            placeholder="">
                 </div>
             </div>
@@ -64,13 +66,12 @@
                     name="image_path" accept="image/*" type="file" class="form-control-file"
                     id="inputEmail4"
                     placeholder=""
-                    onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                >
                 <br>
-                <img id="blah" style="width: 200px;"/>
+                <img id="blah" src="{{$slider->image_path}}" style="width: 200px;"/>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
-
         </form>
     </div>
 @endsection
