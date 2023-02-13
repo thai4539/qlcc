@@ -62,8 +62,8 @@ Route::get('/checkout', [HomeController::class, 'showCheckout'])->name('client.c
 
 Route::get('/detail/{id}', [HomeController::class, 'getProductDetail'])->name('client.detail');
 
-Route::get('/hello', function(){
-    echo 123;
+Route::get('/hi', function(){
+    echo 12345;
 });
 
 
